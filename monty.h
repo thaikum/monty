@@ -59,6 +59,7 @@ typedef struct holder
 extern holder_t global_holder;
 /*============================ execute.c =====================*/
 void execute(FILE *file);
+void hashhandler(char *line);
 
 /*============================ opcode_functions.c =====================*/
 void push(stack_t **stack, unsigned int line_number);

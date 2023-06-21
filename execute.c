@@ -33,7 +33,8 @@ void execute(FILE *file)
 	stack_t *head = NULL;
 
 	while(getline(&(global_holder.buffer), &buffer_size, file) != -1)
-	{
+	{	
+		hashhandler(global_holder.buffer);
 		opcode = strtok(global_holder.buffer, " \n");
 		if (opcode)
 		{
