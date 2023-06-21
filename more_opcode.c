@@ -20,3 +20,28 @@ void add(stack_t **top, unsigned int line_number __attribute__((unused)))
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ *
+ *
+ *
+ *
+ */
+void sub(stack_t **top, unsigned int line_number __attribute__((unused)))
+{
+	stack_t *temp = *top;
+
+	if ((*top) && (*top)->next)
+	{
+		(*top)->next->n -= (*top)->n;
+		*top = (*top)->next;
+		free(temp);
+		(*top)->prev = NULL;
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		free_global_holder();
+		free_stack(*top);
+		exit(EXIT_FAILURE);
+	}
+}
