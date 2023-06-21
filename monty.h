@@ -8,7 +8,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-extern int global_n;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,6 +39,23 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 typedef void(*opcodeFunction)(stack_t **stack, unsigned int line_number);
+
+/**
+ * struct holder - used to store global variables
+ * @buffer: the one containing the current line
+ * @new_value: incase of pop, the value is stored here
+ * @file: the global file being read
+ *
+ * Description: stores variables mainly to help in freeing the memory
+ */
+typedef struct holder
+{
+	char *buffer;
+	int new_value;
+	FILE *file;
+} holder_t;
+
+extern holder_t global_holder;
 /*============================ execute.c =====================*/
 void execute(FILE *file);
 
@@ -52,4 +69,5 @@ void add(stack_t **stack, unsigned int line_number);
 
 /*========================= memory.c ==========================*/
 void free_stack(stack_t *top);
+void free_global_holder();
 #endif

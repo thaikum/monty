@@ -1,7 +1,5 @@
 #include "monty.h"
 
-int global_n;
-
 /**
  * command_exists - checks in opcode is valid
  * @opcode: the opcode to check;
@@ -28,16 +26,15 @@ opcodeFunction command_exists(char *opcode)
 void execute(FILE *file)
 {
 	unsigned int line_number = 1;
-	char *buffer = NULL;
 	size_t buffer_size = 0;
 	char *opcode;
 	char *str_val;
 	void (*f)(stack_t **stack, unsigned int line_number);
 	stack_t *head = NULL;
 
-	while(getline(&buffer, &buffer_size, file) != -1)
+	while(getline(&(global_holder.buffer), &buffer_size, file) != -1)
 	{
-		opcode = strtok(buffer, " \n");
+		opcode = strtok(global_holder.buffer, " \n");
 		if (opcode)
 		{
 			if (strcmp(opcode, "nop") == 0)
@@ -49,6 +46,7 @@ void execute(FILE *file)
 				free_stack(head);
 				fprintf(stderr, "L%d: unknown instruction %s\n",
 					line_number, opcode);
+				free_global_holder();
 				exit (EXIT_FAILURE);
 			}
 
@@ -61,15 +59,20 @@ void execute(FILE *file)
 					fprintf(stderr,
 					       "L%d: usage: push integer\n",
 					       line_number);
+					free_global_holder();
+					free_stack(head);
 					exit(EXIT_FAILURE);
 				}
 
-				global_n = atoi(str_val);
-				if (global_n == 0 && str_val[0] != '0')
+			        global_holder.new_value = atoi(str_val);
+				if (global_holder.new_value == 0 && str_val[0] != '0')
 					goto exiter;
 			}
 
 			f(&head, line_number);
+			free(global_holder.buffer);
+			global_holder.buffer = NULL;
+			buffer_size = 0;
 		}
 		line_number++;
 	}

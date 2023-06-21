@@ -14,9 +14,10 @@ void push(stack_t **top, unsigned int line_number __attribute__((unused)))
 	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_global_holder();
 		exit (EXIT_FAILURE);
 	}
-	new_node->n = global_n;
+	new_node->n = global_holder.new_value;
 	new_node->next = *top;
 	new_node->prev = NULL;
 	if (*top)
@@ -47,6 +48,7 @@ void pint(stack_t **top, unsigned int line_number __attribute__((unused)))
 	else
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_global_holder();
 		exit(EXIT_FAILURE);
 	}
 }
@@ -69,6 +71,7 @@ void pop(stack_t **top, unsigned int line_number __attribute__((unused)))
 	else
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack", line_number);
+		free_global_holder();
 		exit(EXIT_FAILURE);
 	}
 }
@@ -90,6 +93,7 @@ void swap(stack_t **top, unsigned int line_number __attribute__((unused)))
 	else
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+		free_global_holder();
 		exit(EXIT_FAILURE);
 	}
 }

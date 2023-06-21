@@ -1,5 +1,6 @@
 #include "monty.h"
 
+holder_t global_holder;
 /**
  * main - reads a monty file and calls the respective function
  * @argc: number of main arguments
@@ -26,6 +27,8 @@ int main(int argc, char **argv)
 			exit (EXIT_FAILURE);
 		}
 		else{
+			global_holder.file = monty_file;
+			global_holder.buffer = NULL;
 			execute(monty_file);
 			fclose(monty_file);
 		}

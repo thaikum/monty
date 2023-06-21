@@ -15,3 +15,12 @@ void free_stack(stack_t *top)
 		free(temp_head);
 	}
 }
+
+/**
+ * free_global_holder - frees the global holder
+ */
+void free_global_holder()
+{
+	free(global_holder.buffer);
+	fclose(global_holder.file);
+}

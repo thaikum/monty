@@ -15,6 +15,7 @@ void add(stack_t **top, unsigned int line_number __attribute__((unused)))
 	else
 	{
 		fprintf(stderr, "L%d: can't add, stack too short", line_number);
+		free_global_holder();
 		exit(EXIT_FAILURE);
 	}
 }
