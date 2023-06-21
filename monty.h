@@ -70,6 +70,7 @@ void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **top, unsigned int line_number __attribute__((unused)));
 void _div(stack_t **top, unsigned int line_number __attribute__((unused)));
 void mul(stack_t **top, unsigned int line_number __attribute__((unused)));
+void mod(stack_t **top, unsigned int line_number __attribute__((unused)));
 
 /*========================= memory.c ==========================*/
 void free_stack(stack_t *top);
