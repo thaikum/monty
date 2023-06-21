@@ -9,7 +9,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -72,6 +72,7 @@ void sub(stack_t **top, unsigned int line_number __attribute__((unused)));
 void _div(stack_t **top, unsigned int line_number __attribute__((unused)));
 void mul(stack_t **top, unsigned int line_number __attribute__((unused)));
 void mod(stack_t **top, unsigned int line_number __attribute__((unused)));
+void pchar(stack_t **top, unsigned int line_number __attribute__((unused)));
 
 /*========================= memory.c ==========================*/
 void free_stack(stack_t *top);
