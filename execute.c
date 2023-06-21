@@ -10,7 +10,7 @@ opcodeFunction command_exists(char *opcode)
 {
 	instruction_t ins[] = {{"push", push},{"pall", pall},{"pint", pint},
 			       {"pop", pop}, {"swap", swap}, {"add", add},
-			       {"sub", sub}, {"\0", NULL}};
+			       {"sub", sub}, {"div", _div}, {"\0", NULL}};
 	int x = 0;
 
 	for(; ins[x].f; x++)
