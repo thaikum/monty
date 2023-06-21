@@ -73,4 +73,22 @@ void _div(stack_t **top, unsigned int line_number __attribute__((unused)))
 		exit(EXIT_FAILURE);
 	}
 }
-
+/**
+ *
+ *
+ */
+void mul(stack_t **top, unsigned int line_number __attribute__((unused)))
+{
+	if ((*top) && (*top)->next)
+	{
+		(*top)->next->n *= (*top)->n;
+		pop(top, line_number);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		free_global_holder();
+		free_stack(*top);
+		exit(EXIT_FAILURE);
+	}
+}
