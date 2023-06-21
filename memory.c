@@ -22,5 +22,6 @@ void free_stack(stack_t *top)
 void free_global_holder()
 {
 	free(global_holder.buffer);
+	global_holder.buffer = NULL;
 	fclose(global_holder.file);
 }

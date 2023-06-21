@@ -92,8 +92,10 @@ void swap(stack_t **top, unsigned int line_number __attribute__((unused)))
 	}
 	else
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n",
+			line_number);
 		free_global_holder();
+		free_stack(*top);
 		exit(EXIT_FAILURE);
 	}
 }
