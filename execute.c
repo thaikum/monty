@@ -63,9 +63,9 @@ void execute(FILE *file)
 					free_stack(head);
 					exit(EXIT_FAILURE);
 				}
-
-			        global_holder.new_value = atoi(str_val);
-				if (global_holder.new_value == 0 && str_val[0] != '0')
+				if (is_number(str_val))
+					global_holder.new_value = atoi(str_val);
+				else
 					goto exiter;
 			}
 

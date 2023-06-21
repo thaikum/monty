@@ -70,4 +70,7 @@ void add(stack_t **stack, unsigned int line_number);
 /*========================= memory.c ==========================*/
 void free_stack(stack_t *top);
 void free_global_holder();
+
+/*========================= utility.c =============================*/
+int is_number(char *str);
 #endif
