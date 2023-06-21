@@ -77,4 +77,5 @@ void execute(FILE *file)
 		line_number++;
 	}
 	free_stack(head);
+	free(global_holder.buffer);
 }
