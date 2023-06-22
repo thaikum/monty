@@ -11,8 +11,7 @@ opcodeFunction command_exists(char *opcode)
 	instruction_t ins[] = {{"push", push},{"pall", pall},{"pint", pint},
 			       {"pop", pop}, {"swap", swap}, {"add", add},
 			       {"sub", sub}, {"div", _div}, {"mul", mul}, {"mod", mod},
-			       {"pstr", pstr}, {"pchar", pchar},
-			       {"\0", NULL}};
+			       {"pstr", pstr}, {"pchar", pchar}, {"rotl", rotl}, {"\0", NULL}};
 	int x = 0;
 
 	for(; ins[x].f; x++)

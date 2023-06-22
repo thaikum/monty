@@ -44,10 +44,32 @@ void pstr(stack_t **top, unsigned int line_number __attribute__((unused)))
 	{
 		if (!temp->n)
 			break;
-		if (isalpha(temp->n) == 0)
+		if (!isalpha(temp->n))
 			break;
 		c = temp->n;	
 		printf("%c", c);
 	}
 	printf("\n");
 }
+/**
+ *
+ *
+ *
+ */
+void rotl(stack_t **top, unsigned int line_number __attribute__((unused)))
+{
+	stack_t *temp = *top;
+	int i;
+
+	if (!(*top) || !top || !(*top)->next)
+		return;
+
+	i = temp->n;
+	while (temp->next)
+	{
+		temp = temp->next;
+		temp->prev->n = temp->n;
+	}
+	temp->n = i;
+}
+
