@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define  _GNU_SOURCE
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -8,7 +9,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -53,11 +54,13 @@ typedef struct holder
 	char *buffer;
 	int new_value;
 	FILE *file;
+	int mode;
 } holder_t;
 
 extern holder_t global_holder;
 /*============================ execute.c =====================*/
 void execute(FILE *file);
+void hashhandler(char *line);
 
 /*============================ opcode_functions.c =====================*/
 void push(stack_t **stack, unsigned int line_number);
@@ -66,6 +69,17 @@ void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **top, unsigned int line_number __attribute__((unused)));
+void _div(stack_t **top, unsigned int line_number __attribute__((unused)));
+void mul(stack_t **top, unsigned int line_number __attribute__((unused)));
+void mod(stack_t **top, unsigned int line_number __attribute__((unused)));
+void pchar(stack_t **top, unsigned int line_number __attribute__((unused)));
+void pstr(stack_t **top, unsigned int line_number __attribute__((unused)));
+void rotl(stack_t **top, unsigned int line_number __attribute__((unused)));
+void rotr(stack_t **top, unsigned int line_number __attribute__((unused)));
+void _stack(stack_t **top __attribute__((unused)), unsigned int line_number __attribute__((unused)));
+void _queue(stack_t **top __attribute__((unused)), unsigned int line_number __attribute__((unused)));
+stack_t *get_tail(stack_t *top);
 
 /*========================= memory.c ==========================*/
 void free_stack(stack_t *top);

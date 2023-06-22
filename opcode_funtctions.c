@@ -18,11 +18,28 @@ void push(stack_t **top, unsigned int line_number __attribute__((unused)))
 		exit (EXIT_FAILURE);
 	}
 	new_node->n = global_holder.new_value;
-	new_node->next = *top;
-	new_node->prev = NULL;
-	if (*top)
-		(*top)->prev = new_node;
-	*top = new_node;
+	if (global_holder.mode == 0)
+	{
+		new_node->next = *top;
+		new_node->prev = NULL;
+		if (*top)
+			(*top)->prev = new_node;
+		*top = new_node;
+	}
+	else
+	{
+		new_node->next = NULL;
+		if (!(*top))
+		{
+			new_node->prev = NULL;
+			*top = new_node;
+		}
+		else
+		{	
+			new_node->prev = get_tail(*top);
+			new_node->prev->next = new_node;
+		}
+	}
 }
 /**
  * pall - prints all elements in the stack
