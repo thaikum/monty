@@ -73,6 +73,7 @@ void _div(stack_t **top, unsigned int line_number __attribute__((unused)));
 void mul(stack_t **top, unsigned int line_number __attribute__((unused)));
 void mod(stack_t **top, unsigned int line_number __attribute__((unused)));
 void pchar(stack_t **top, unsigned int line_number __attribute__((unused)));
+void pstr(stack_t **top, unsigned int line_number __attribute__((unused)));
 
 /*========================= memory.c ==========================*/
 void free_stack(stack_t *top);

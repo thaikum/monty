@@ -30,3 +30,24 @@ void pchar(stack_t **top, unsigned int line_number __attribute__((unused)))
 			exit(EXIT_FAILURE);
 	}
 }
+/**
+ *
+ *
+ *
+ */
+void pstr(stack_t **top, unsigned int line_number __attribute__((unused)))
+{
+	char c;
+	stack_t *temp = *top;
+
+	for (; temp; temp = temp->next)
+	{
+		if (!temp->n)
+			break;
+		if (isalpha(temp->n) == 0)
+			break;
+		c = temp->n;	
+		printf("%c", c);
+	}
+	printf("\n");
+}
