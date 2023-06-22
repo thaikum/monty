@@ -72,4 +72,28 @@ void rotl(stack_t **top, unsigned int line_number __attribute__((unused)))
 	}
 	temp->n = i;
 }
+/**
+ *
+ *
+ *
+ */
+void rotr(stack_t **top, unsigned int line_number __attribute__((unused)))
+{
+	stack_t *temp = *top;
+	int i;
 
+	if (!(*top) || !top || !(*top)->next)
+		return;
+
+	for (; temp->next; temp = temp->next)
+		;
+	i = temp->n;
+
+	while (temp->prev)
+	{
+		temp = temp->prev;
+		temp->next->n = temp->n;
+	}
+	(*top)->n = i;
+}
+	

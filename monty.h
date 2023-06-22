@@ -75,6 +75,7 @@ void mod(stack_t **top, unsigned int line_number __attribute__((unused)));
 void pchar(stack_t **top, unsigned int line_number __attribute__((unused)));
 void pstr(stack_t **top, unsigned int line_number __attribute__((unused)));
 void rotl(stack_t **top, unsigned int line_number __attribute__((unused)));
+void rotr(stack_t **top, unsigned int line_number __attribute__((unused)));
 
 /*========================= memory.c ==========================*/
 void free_stack(stack_t *top);
