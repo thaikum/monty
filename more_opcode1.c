@@ -95,5 +95,4 @@ void rotr(stack_t **top, unsigned int line_number __attribute__((unused)))
 		temp->next->n = temp->n;
 	}
 	(*top)->n = i;
-}
-	
+}	

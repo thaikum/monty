@@ -54,6 +54,7 @@ typedef struct holder
 	char *buffer;
 	int new_value;
 	FILE *file;
+	int mode;
 } holder_t;
 
 extern holder_t global_holder;
@@ -76,6 +77,9 @@ void pchar(stack_t **top, unsigned int line_number __attribute__((unused)));
 void pstr(stack_t **top, unsigned int line_number __attribute__((unused)));
 void rotl(stack_t **top, unsigned int line_number __attribute__((unused)));
 void rotr(stack_t **top, unsigned int line_number __attribute__((unused)));
+void _stack(stack_t **top __attribute__((unused)), unsigned int line_number __attribute__((unused)));
+void _queue(stack_t **top __attribute__((unused)), unsigned int line_number __attribute__((unused)));
+stack_t *get_tail(stack_t *top);
 
 /*========================= memory.c ==========================*/
 void free_stack(stack_t *top);
